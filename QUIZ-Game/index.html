@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=devicl̥ōe-width, initial-scale=1.0">
+    <title>Brainiac Quiz</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="quiz-container">
+        <!-- Start Screen -->
+        <div class="start-screen" id="start-screen">
+            <h1>Brainiac Quiz</h1>
+            <div class="category-select">
+                <h2>Choose Category:</h2>
+                <div class="categories" id="categories"></div>
+            </div>
+            <button id="start-btn">Start Quiz</button>
+        </div>
+
+        <!-- Quiz Screen -->
+        <div class="quiz-screen" id="quiz-screen">
+            <div class="quiz-header">
+                <div class="timer">
+                    <span id="time">30</span>s
+                </div>
+                <div class="score">
+                    Score: <span id="score">0</span>
+                </div>
+            </div>
+            <div class="progress-bar">
+                <div class="progress" id="progress"></div>
+            </div>
+            <div class="question" id="question"></div>
+            <div class="options" id="options"></div>
+            <div class="feedback" id="feedback"></div>
+            <button id="next-btn" class="hidden">Next Question</button>
+        </div>
+
+        <!-- Results Screen -->
+        <div class="results-screen hidden" id="results-screen">
+            <h1>Quiz Completed!</h1>
+            <div class="result-stats">
+                <p>Your Score: <span id="final-score">0</span>/<span id="total-questions">0</span></p>
+                <p>Correct Answers: <span id="correct-answers">0</span></p>
+                <p>Wrong Answers: <span id="wrong-answers">0</span></p>
+                <p>Time Taken: <span id="time-taken">0</span>s</p>
+            </div>
+            <button id="restart-btn">Restart Quiz</button>
+        </div>
+    </div>
+    <script src="questions.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

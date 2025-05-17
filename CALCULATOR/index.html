@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neon Calculator</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="calculator">
+        <div class="brand"><span>CALCULATOR</span></div>
+        <div class="display">
+            <div class="previous-operand" id="previous-operand"></div>
+            <input type="text" id="current-operand" readonly>
+        </div>
+        <div class="buttons">
+            <button class="span-2" onclick="clearAll()">AC</button>
+            <button onclick="backspace()">DEL</button>
+            <button class="operator" onclick="appendOperation('√(')">√</button>
+            <button class="number" onclick="appendNumber('7')">7</button>
+            <button class="number" onclick="appendNumber('8')">8</button>
+            <button class="number" onclick="appendNumber('9')">9</button>
+            <button class="operator" onclick="appendOperation('÷')">÷</button>
+            <button class="number" onclick="appendNumber('4')">4</button>
+            <button class="number" onclick="appendNumber('5')">5</button>
+            <button class="number" onclick="appendNumber('6')">6</button>
+            <button class="operator" onclick="appendOperation('×')">×</button>
+            <button class="number" onclick="appendNumber('1')">1</button>
+            <button class="number" onclick="appendNumber('2')">2</button>
+            <button class="number" onclick="appendNumber('3')">3</button>
+            <button class="operator" onclick="appendOperation('-')">-</button>
+            <button class="number" onclick="appendNumber('0')">0</button>
+            <button class="number" onclick="appendNumber('.')">.</button>
+            <button class="operator" onclick="toggleSign()">±</button>
+            <button class="operator" onclick="appendOperation('+')">+</button>
+            <button class="span-2 equals" onclick="calculate()">=</button>
+            <button class="span-2 operator" onclick="appendOperation('^')">^</button>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
