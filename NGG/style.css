@@ -1,0 +1,394 @@
+/* Color Palette */
+:root {
+    --primary-color: #4a90e2; /* Sky Blue */
+    --primary-dark: #357ABD;
+    --secondary-color: #8E44AD; /* Purple */
+    --secondary-dark: #6C3483;
+    --accent-color: #2ECC71; /* Green */
+    --warning-color: #E67E22; /* Orange */
+    --error-color: #E74C3C; /* Red */
+    --text-color: #34495E; /* Dark Blue-Gray */
+    --light-text-color: #ECF0F1; /* Light Gray */
+    --bg-color: #F8F9FA; /* Lightest Gray */
+    --card-bg: #FFFFFF;
+    --border-color: #DDE1E6;
+}
+
+body {
+    font-family: 'Poppins', sans-serif; /* Using the new font */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); /* Gradient background */
+    color: var(--text-color);
+    overflow-x: hidden;
+    line-height: 1.6;
+}
+
+.main-wrapper {
+    width: 100%;
+    max-width: 550px; /* Slightly wider */
+    padding: 20px; /* Padding for small screens */
+    box-sizing: border-box;
+}
+
+.container {
+    background-color: var(--card-bg);
+    padding: 35px 45px;
+    border-radius: 15px; /* More rounded corners */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15); /* Stronger shadow */
+    text-align: center;
+    position: relative;
+    z-index: 10;
+    overflow: hidden; /* Important for inner elements */
+    transform: translateY(0); /* Initial state for animation */
+    animation: fadeInSlideUp 0.8s ease-out forwards; /* Entry animation */
+}
+
+@keyframes fadeInSlideUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+h1 {
+    color: var(--primary-color);
+    margin-bottom: 25px;
+    font-size: 2.5em; /* Larger title */
+    font-weight: 700; /* Bolder */
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.05);
+}
+
+p {
+    font-size: 1.1em;
+    margin-bottom: 12px;
+}
+
+.highlight-text {
+    color: var(--primary-color);
+    font-weight: 600;
+    font-size: 1.2em; /* Slightly larger for emphasis */
+}
+
+
+/* Game Settings */
+.game-settings {
+    margin-bottom: 30px;
+}
+
+#difficulty {
+    padding: 10px 20px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    font-size: 1em;
+    cursor: pointer;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    appearance: none; /* Remove default dropdown arrow */
+    background-image: url('data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22%2334495E%22%3E%3Cpath%20d%3D%22M7%2010l5%205%205-5z%22%2F%3E%3C%2Fsvg%3E'); /* Custom arrow */
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 20px;
+    outline: none;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+#difficulty:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.2);
+}
+
+/* Input Section */
+.input-section {
+    margin: 30px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+label {
+    font-weight: 600;
+    font-size: 1.1em;
+    color: var(--primary-color);
+}
+
+input[type="number"] {
+    padding: 15px;
+    border: 2px solid var(--border-color);
+    border-radius: 10px;
+    font-size: 1.3em; /* Larger input font */
+    width: 100%;
+    max-width: 220px;
+    text-align: center;
+    color: var(--text-color);
+    background-color: var(--bg-color);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    outline: none;
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type="number"]:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 4px rgba(74, 144, 226, 0.3);
+}
+
+/* Input feedback colors */
+input.too-low-border {
+    border-color: var(--warning-color);
+    box-shadow: 0 0 0 4px rgba(230, 126, 34, 0.3);
+}
+input.too-high-border {
+    border-color: var(--error-color);
+    box-shadow: 0 0 0 4px rgba(231, 76, 60, 0.3);
+}
+input.correct-border {
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 4px rgba(46, 204, 113, 0.3);
+}
+
+/* Buttons */
+.game-button {
+    padding: 14px 30px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.15s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.game-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+.game-button:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.game-button:disabled {
+    background-color: var(--border-color) !important; /* !important to override other button styles */
+    color: #999;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+.primary-button {
+    background-color: var(--primary-color);
+    color: var(--light-text-color);
+}
+.primary-button:hover {
+    background-color: var(--primary-dark);
+}
+
+.secondary-button {
+    background-color: var(--secondary-color);
+    color: var(--light-text-color);
+}
+.secondary-button:hover {
+    background-color: var(--secondary-dark);
+}
+
+.reset-button {
+    background-color: #6c757d; /* Standard gray for reset */
+    color: var(--light-text-color);
+}
+.reset-button:hover {
+    background-color: #5a6268;
+}
+
+.message {
+    margin-top: 25px;
+    font-weight: 700; /* Bolder message */
+    font-size: 1.3em;
+    min-height: 1.5em; /* Ensure consistent height */
+    opacity: 0; /* Hidden initially */
+    transform: translateY(10px);
+    animation: messageFadeIn 0.4s ease-out forwards; /* Fade in animation */
+}
+
+@keyframes messageFadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+#message.correct {
+    color: var(--accent-color);
+}
+#message.too-high {
+    color: var(--error-color);
+}
+#message.too-low {
+    color: var(--warning-color);
+}
+
+.game-controls {
+    display: flex;
+    justify-content: center;
+    gap: 20px; /* More space between buttons */
+    margin-top: 30px;
+    flex-wrap: wrap;
+}
+
+/* Score Section */
+.score-section {
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border-color);
+}
+
+.score-section h2 {
+    font-size: 1.3em;
+    color: var(--primary-color);
+    margin-bottom: 10px;
+}
+
+#bestScore {
+    font-size: 1.5em; /* Larger best score */
+    color: var(--accent-color);
+    font-weight: 700;
+}
+
+/* Attempts History */
+.attempts-history {
+    margin-top: 40px;
+    border-top: 1px solid var(--border-color);
+    padding-top: 25px;
+}
+
+.attempts-history h2 {
+    color: var(--primary-color);
+    font-size: 1.4em;
+    margin-bottom: 20px;
+}
+
+#guessList {
+    list-style-type: none;
+    padding: 0;
+    max-height: 180px; /* Slightly taller history */
+    overflow-y: auto;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    background-color: var(--bg-color);
+    box-shadow: inset 0 1px 5px rgba(0,0,0,0.05); /* Inner shadow for depth */
+}
+
+#guessList li {
+    padding: 10px 20px;
+    border-bottom: 1px solid var(--border-color);
+    text-align: left;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1em;
+    transition: background-color 0.2s ease;
+}
+
+#guessList li:last-child {
+    border-bottom: none;
+}
+
+#guessList li:hover {
+    background-color: #F0F2F5; /* Subtle hover effect */
+}
+
+#guessList li span {
+    font-weight: 600;
+}
+
+/* Specific list item colors based on guess outcome */
+#guessList li.too-low {
+    color: var(--warning-color);
+}
+#guessList li.too-high {
+    color: var(--error-color);
+}
+#guessList li.correct {
+    color: var(--accent-color);
+}
+
+
+/* Confetti Canvas Styling */
+#confetti-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.5s ease-out;
+}
+
+#confetti-canvas.active {
+    opacity: 1;
+}
+
+/* Scrollbar styles for guess list */
+#guessList::-webkit-scrollbar {
+    width: 8px;
+}
+
+#guessList::-webkit-scrollbar-track {
+    background: var(--bg-color);
+    border-radius: 10px;
+}
+
+#guessList::-webkit-scrollbar-thumb {
+    background: var(--border-color);
+    border-radius: 10px;
+}
+
+#guessList::-webkit-scrollbar-thumb:hover {
+    background: var(--primary-color);
+}
+
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+    .container {
+        padding: 25px 30px;
+        border-radius: 10px; /* Less rounded for small screens */
+    }
+    h1 {
+        font-size: 2em;
+        margin-bottom: 20px;
+    }
+    p {
+        font-size: 1em;
+    }
+    .game-button, input, select {
+        font-size: 0.95em;
+        padding: 12px 25px;
+    }
+    .input-section, .game-controls {
+        gap: 15px;
+    }
+    .game-controls {
+        flex-direction: column; /* Stack buttons on small screens */
+    }
+    .score-section, .attempts-history {
+        margin-top: 30px;
+        padding-top: 15px;
+    }
+    #guessList {
+        max-height: 160px;
+    }
+}

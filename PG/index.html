@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Generator</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="min-h-screen bg-gradient-to-br from-indigo-500 to-purple-700 flex items-center justify-center p-4">
+
+    <div class="bg-white p-8 rounded-2xl shadow-2xl w-full max-w-lg text-center border border-gray-100 transform transition-all duration-300 hover:scale-[1.01]">
+        <h1 class="text-4xl font-extrabold text-gray-800 mb-6">
+            <span class="bg-clip-text text-transparent bg-gradient-to-r from-indigo-500 to-purple-700">
+                Password
+            </span>
+            Generator
+        </h1>
+
+        <div class="mb-2 flex items-center bg-gray-100 rounded-lg p-3 border border-gray-200 focus-within:ring-2 focus-within:ring-indigo-500 transition-all duration-200 ease-in-out">
+            <input
+                type="text"
+                id="passwordDisplay"
+                class="flex-grow bg-transparent text-gray-800 text-xl font-mono tracking-wide outline-none cursor-default select-all"
+                readonly
+                placeholder="Generate a password"
+            />
+            <button
+                id="copyPasswordButton"
+                class="ml-4 p-2 rounded-full bg-indigo-500 text-white hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition-all duration-200 ease-in-out flex items-center justify-center shadow-md hover:shadow-lg shadow-indigo-500/50"
+                title="Copy to clipboard"
+            >
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m-4 3H9m10 0a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2a2 2 0 012-2z"></path></svg>
+            </button>
+        </div>
+        <p id="messageDisplay" class="text-green-600 text-sm mt-2 hidden"></p>
+        <p id="errorDisplay" class="text-red-600 text-sm mt-2 hidden"></p>
+
+        <div class="mt-4 mb-6 text-left">
+            <p class="text-gray-700 text-base font-semibold">Strength: <span id="strengthIndicator" class="font-bold">N/A</span></p>
+        </div>
+
+        <div class="mb-6 text-left">
+            <label for="passwordLength" class="block text-gray-700 text-lg font-semibold mb-2">
+                Password Length: <span id="lengthValue" class="text-indigo-600">12</span>
+            </label>
+            <input
+                type="range"
+                id="passwordLength"
+                min="6"
+                max="30"
+                value="12"
+                class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-indigo-500"
+            />
+        </div>
+
+        <div class="mb-8 grid grid-cols-1 sm:grid-cols-2 gap-4 text-left">
+            <div class="flex items-center">
+                <input type="checkbox" id="includeUppercase" checked class="h-5 w-5 text-indigo-600 rounded border-gray-300 focus:ring-indigo-500 transition-all duration-200 ease-in-out">
+                <label for="includeUppercase" class="ml-2 text-gray-700 text-base select-none cursor-pointer">Include Uppercase Letters</label>
+            </div>
+            <div class="flex items-center">
+                <input type="checkbox" id="includeLowercase" checked class="h-5 w-5 text-indigo-600 rounded border-gray-300 focus:ring-indigo-500 transition-all duration-200 ease-in-out">
+                <label for="includeLowercase" class="ml-2 text-gray-700 text-base select-none cursor-pointer">Include Lowercase Letters</label>
+            </div>
+            <div class="flex items-center">
+                <input type="checkbox" id="includeNumbers" checked class="h-5 w-5 text-indigo-600 rounded border-gray-300 focus:ring-indigo-500 transition-all duration-200 ease-in-out">
+                <label for="includeNumbers" class="ml-2 text-gray-700 text-base select-none cursor-pointer">Include Numbers</label>
+            </div>
+            <div class="flex items-center">
+                <input type="checkbox" id="includeSymbols" class="h-5 w-5 text-indigo-600 rounded border-gray-300 focus:ring-indigo-500 transition-all duration-200 ease-in-out">
+                <label for="includeSymbols" class="ml-2 text-gray-700 text-base select-none cursor-pointer">Include Symbols</label>
+            </div>
+            <div class="flex items-center sm:col-span-2">
+                <input type="checkbox" id="excludeSimilar" class="h-5 w-5 text-indigo-600 rounded border-gray-300 focus:ring-indigo-500 transition-all duration-200 ease-in-out">
+                <label for="excludeSimilar" class="ml-2 text-gray-700 text-base select-none cursor-pointer">Exclude Similar Characters (l, I, 1, o, O, 0)</label>
+            </div>
+        </div>
+
+        <button
+            id="generateButton"
+            class="w-full py-3 px-6 rounded-lg text-white font-semibold text-lg transition-all duration-300 ease-in-out bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 transform hover:scale-105 shadow-lg hover:shadow-xl shadow-green-500/50"
+        >
+            Generate Password
+        </button>
+
+        <div class="mt-8 text-left">
+            <h2 class="text-xl font-bold text-gray-800 mb-4">Generated Passwords History</h2>
+            <ul id="passwordHistoryList" class="bg-gray-50 p-4 rounded-lg border border-gray-200 max-h-40 overflow-y-auto">
+                </ul>
+            <button
+                id="clearHistoryButton"
+                class="mt-4 w-full py-2 px-4 rounded-lg bg-red-500 text-white font-semibold hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 transition-all duration-200 ease-in-out"
+            >
+                Clear History
+            </button>
+        </div>
+    </div>
+
+    <script src="script.js">
+        
+    </script>
+</body>
+</html>

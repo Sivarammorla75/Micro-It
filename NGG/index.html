@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Number Guessing Game</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="main-wrapper"> <div class="container">
+            <h1>Guess The Number!</h1> <div class="game-settings">
+                <label for="difficulty">Difficulty:</label>
+                <select id="difficulty">
+                    <option value="easy">Easy (1-50, 12 attempts)</option>
+                    <option value="medium" selected>Medium (1-100, 10 attempts)</option>
+                    <option value="hard">Hard (1-200, 8 attempts)</option>
+                </select>
+            </div>
+
+            <p>I'm thinking of a number between <span id="lowerBound" class="highlight-text">1</span> and <span id="upperBound" class="highlight-text">100</span>.</p>
+            <p>You have <span id="attemptsLeft" class="highlight-text">10</span> attempts left.</p>
+            
+            <div class="input-section">
+                <label for="guessInput">Enter your guess:</label>
+                <input type="number" id="guessInput" min="1" max="100" placeholder="e.g., 50">
+                <button id="checkButton" class="game-button primary-button">Check Guess</button>
+            </div>
+
+            <p id="message" class="message"></p>
+            
+            <div class="game-controls">
+                <button id="hintButton" class="game-button secondary-button">Get Hint (1 per game)</button>
+                <button id="resetButton" class="game-button reset-button hidden">Play Again</button>
+            </div>
+            
+            <div class="score-section">
+                <h2>Best Score: <span id="bestScore" class="highlight-text">N/A</span> attempts</h2>
+            </div>
+
+            <div class="attempts-history">
+                <h2>Your Guesses:</h2>
+                <ul id="guessList">
+                    </ul>
+            </div>
+        </div>
+    </div>
+
+    <canvas id="confetti-canvas"></canvas>
+
+    <script src="script.js"></script>
+</body>
+</html>
